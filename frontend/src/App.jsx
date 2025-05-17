@@ -5,11 +5,11 @@ function App() {
   const [nombre, setNombre] = useState("");
   const [respuesta, setRespuesta] = useState("");
 
-  // Change the URL to match your backend service name in docker-compose
-  const API_URL = "http://backend:5000";
+  // Use relative path instead of full URL
+  const API_URL = "/api";
 
   useEffect(() => {
-    fetch(`${API_URL}/api/message`)
+    fetch(`${API_URL}/message`)
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
       .catch(() => setMessage("Error al obtener mensaje"));
@@ -19,7 +19,7 @@ function App() {
     e.preventDefault();
     setRespuesta("Enviando...");
     try {
-      const res = await fetch(`${API_URL}/api/message`, {
+      const res = await fetch(`${API_URL}/message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre }),

@@ -1,5 +1,6 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from flask_cors import CORS
+from flask import jsonify, request
 
 app = Flask(__name__)
 CORS(app)  # Permitir solicitudes CORS desde React
